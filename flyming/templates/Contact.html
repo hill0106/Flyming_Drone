@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css">
     {% load static %}
     <link rel="stylesheet" href="{% static "styles/index.css" %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static "styles/contact.css" %}" type="text/css"/>
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <body>
@@ -34,6 +35,56 @@
             </ul>
         </nav>
     </header>
+    <main>
+        <div class="left">
+            <h1 style="color:#0C4545; font-size: 2rem; font-weight:500; margin-top: 50px;">Contact Information</h1>
+            <h3 style="font-size: 1.5rem; font-weight:lighter;">I am a NCU student. I am doing nothing right now.XDDI am a NCU student. I am doing </h3>
+            <div class="contact">
+                <div class="c1">
+                    <div class="circle">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3>(886)933-429-889</h3>
+                </div>
+                <div class="c1">
+                    <div class="circle">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <h3>123@gmail.com</h3>
+                </div>
+                <div class="c1">
+                    <div class="circle">
+                        <i class="fa-solid fa-info"></i>
+                    </div>
+                    <a class="link"><h3>Facebook</h3></a>
+                    <a class="link"><h3>Instagram</h3></a>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <form action="post">
+                <div class="f1">
+                    <h3>Name</h3>
+                    <input type="text"/>
+                </div>
+                <div class="f1">
+                    <h3>Email</h3>
+                    <input type="email" />
+                </div>
+                <div class="f1">
+                    <h3>Subject</h3>
+                    <input type="text" />
+                </div>
+                <div class="f1">
+                    <h3>Content</h3>
+                    <input class="content" type="text"/>
+                </div>
+                <div class="sub">
+                    <button id="submit-task" type="submit" class="btn btn-primary edit-btn">Send</button>
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 <footer class="bg-light text-center text-lg-start">
     <!-- Copyright -->
