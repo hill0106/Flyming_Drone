@@ -108,7 +108,8 @@ header nav ul a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: 30px;
+    width: 90vw;
+    /* margin-right: 30px; */
 }
 
 .postC {
@@ -116,17 +117,19 @@ header nav ul a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .latest {
     font-size: 25px;
     color: #0C4545;
-    margin-left: 50px;
+    /* margin-left: 50px; */
 }
 
 
   .search input:focus {
     box-shadow: none;
+    background-color: #B2D3D3;
   }
 
 
@@ -141,6 +144,7 @@ header nav ul a {
 hr.solid {
     border-top: 2px solid #B2D3D3;
     margin: 5px 20px;
+    width: 90vw;
 }
 
 .bg-light {
@@ -166,4 +170,39 @@ hr.solid {
 
 .social i {
     color:white
+}
+
+#carousel1 {
+    width: 90vw;
+    margin: 20px 0px;
+    height: 23vw;
+}
+
+.owl img {
+    width: 15vw;
+    height: 15vw;
+    object-fit: fill;
+}
+
+#carousel1 .owl h3 {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 15px;
+}
+
+.owl-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95vw;
+    transform: translate(-40px, -15vw);
+}
+
+.owl-nav button{
+    color: #0C4545!important;
+    font-size: 4rem!important;
+}
+
+.owl-nav button:hover{
+    background: none!important;
 }

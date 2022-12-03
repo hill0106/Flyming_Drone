@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"></link>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"></link>
     <link rel="shortcut icon" sizes="16x16 32x32 48x48 64x64"  href="https://drive.google.com/uc?id=1eCnAF9V1qNLE6axkEl048Bg4_zhT814l" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +59,29 @@
                 <input type="text" class="form-control search-ipt" id="livebox" placeholder="Search">
             </div>
         </div>
+        <div class="project">
+            <div class="L">
+                <div class="owl-carousel owl-theme" id="carousel2">
+                    <div class="owl">
+                        <img src="https://images.unsplash.com/photo-1669201825198-bedf4966563e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80" />
+                    </div>
+                    <div class="owl">
+                        <img src="https://images.unsplash.com/photo-1669201825198-bedf4966563e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80" />
+                    </div>
+                    <div class="owl">
+                        <img src="https://images.unsplash.com/photo-1669201825198-bedf4966563e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80" />
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <i class="fa-solid fa-clock"></i>
+                    <h3>2020/08/03</h3>
+                </div>
+            </div>
+            <div class="R">
+                <h1>Title</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam perspiciatis atque dolor vel nesciunt harum ipsum minus, esse cum tempore placeat incidunt odio autem nulla mollitia eos voluptate exercitationem cupiditate.</p>
+            </div>
+        </div>
     </div>
 </body>
 <footer class="bg-light text-center text-lg-start">
@@ -69,12 +94,13 @@
       Copyright © 2022 FlyMing. All rights reserved.
     </div>
     <div class="social">
-        <a href=""><i class="fa-brands fa-youtube fa-2x"></i></a>
-        <a href=""><i class="fa-brands fa-facebook fa-2x"></i></a>
-        <a href=""><i class="fa-brands fa-instagram fa-2x"></i></a>
+        <a href="https://www.youtube.com/@smcming" target="_blank"><i class="fa-brands fa-youtube fa-2x"></i></a>
+        <a href="https://www.facebook.com/shihming.chiu8?mibextid=LQQJ4d" target="_blank"><i class="fa-brands fa-facebook fa-2x"></i></a>
+        <a href="https://instagram.com/smcming8?igshid=YWJhMjlhZTc=" target="_blank"><i class="fa-brands fa-instagram fa-2x"></i></a>
     </div>
 <!-- Copyright -->
 </footer>
 {% load static %}
 <script type="text/javascript" src="{% static "app.js" %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </html>
