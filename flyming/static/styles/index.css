@@ -108,6 +108,7 @@ header nav ul a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-right: 30px;
 }
 
 .postC {
@@ -144,7 +145,7 @@ hr.solid {
 
 .bg-light {
     background-color: #B2D3D3!important;
-    height: 28vh;
+    height: 17vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
