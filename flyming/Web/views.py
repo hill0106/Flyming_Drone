@@ -10,3 +10,13 @@ def contact(request):
         content = request.POST['content']
 
         send_mail(subject, content, email, )
+    return render(request, "Contact.html")
+
+def home(request):
+    return render(request, "index.html")
+
+def aboutme(request):
+    return render(request, "AboutMe.html")
+
+def project(request):
+    return render(request, "Project.html")
