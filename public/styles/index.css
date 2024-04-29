@@ -1,0 +1,353 @@
+* {
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+  
+body {
+    position: relative;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    margin-right: 1.5rem;
+}
+
+.nav-menu .nav-item {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.bg-dark {
+    transition: all 0.25s ease-in;
+    height: auto;
+    width: 100%;
+    background-color: #B2D3D3!important;
+}
+
+.fixed-top {
+    position: sticky;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav ul .active {
+    border-bottom: 2px #159A9A solid; 
+}
+
+nav ul a:hover {
+    color: #159A9A; 
+}
+
+.icon {
+    width: 12vw;
+    height: 12vw;
+    margin-left: 5vw;
+    margin-right: 2vw;
+}
+
+.icon2 {
+    width: 5vw;
+    height: 5vw;
+    margin: 0px 5px;
+}
+
+.title {
+    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    margin-right: 25vw;
+    color: black;
+}
+
+.navbar-brand {
+   width: 40%;
+}
+
+.navbar-dark .navbar-toggler {
+    color: transparent;
+    border-color: transparent;
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image:none;
+    color: #000; /* Change this to your desired color */
+  }
+
+.offcanvas-header, .offcanvas-body {
+    background-color: #B2D3D3;
+}
+
+.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link {
+    text-decoration: none;
+    font-family: "Oswald", sans-serif;
+    font-size: 1.3rem;
+    color: #0C4545;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    text-decoration: none;
+    font-family: "Oswald", sans-serif;
+    font-size: 1.3rem;
+    color: #159A9A;
+}
+
+.active, .navbar-dark .nav-link:focus, .nav-link:hover {
+    color: #477e9d;
+}
+
+.offcanvas {
+    width: 20%;
+}
+
+/* background */
+
+.bgC {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg {
+    width: 100vw;
+    height: 25vw;
+    object-fit: cover;
+    object-position: 0px 80%;
+}
+
+.blueRec {
+    background: #03FFFF;
+    width: 10px;
+    height: 10vh;
+}
+
+.titleC {
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.bgTitle {
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    font-size: 6rem;
+    transform: translateX(20px);
+}
+
+.topC {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    /* margin-right: 30px; */
+}
+
+.postC {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.latest {
+    font-size: 25px;
+    color: #0C4545;
+    /* margin-left: 50px; */
+}
+
+
+  .search input:focus {
+    box-shadow: none;
+    background-color: #B2D3D3;
+  }
+
+
+
+.search-ipt {
+    background: #B2D3D3;
+    width: 20vw;
+    border-radius: 15px;
+    border: none;
+}
+
+hr.solid {
+    border-top: 2px solid #B2D3D3;
+    margin: 5px 20px;
+    width: 90vw;
+}
+
+/* footer */
+
+.bg-light {
+    background-color: #B2D3D3!important;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.p-3 {
+    padding: 0 !important;
+}
+
+  
+
+.t {
+    font-size: 1.3rem;
+    color: #0C4545;
+    font-weight: 500;
+}
+.social {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 10rem;
+    margin: 15px;
+}
+
+.social i {
+    color:white
+}
+
+#carousel1 {
+    margin: 20px 0px;
+    width: 90vw;
+}
+
+.owl img {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+#carousel1 .owl h3 {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 15px;
+    color: #000;
+}
+
+.owl-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95vw;
+    transform: translate(-40px, -15vw);
+}
+
+.owl-nav button{
+    color: #0C4545!important;
+    font-size: 4rem!important;
+}
+
+.owl-nav button:hover{
+    background: none!important;
+}
+
+.bg-light {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* Adjust background color as needed */
+    padding: 20px 0; /* Adjust padding as needed */
+    text-align: center; /* Align text to the center */
+}
+
+/* RESPONSIVE STYLE */
+
+
+
+@media screen and (max-width: 1200px) {
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    h3 {
+        font-size: 32px;
+    }
+
+    h4 {
+        font-size: 28px;
+    }
+
+    .title {
+        margin-right: 10vw;
+        font-size: 2rem;
+    }
+
+    .bgTitle {
+        font-size: 4rem;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    header {
+        height: 15vh;
+    }
+
+
+    .bgTitle {
+        font-size: 3rem;
+    }
+
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+
+    .offcanvas.offcanvas-end {
+        width: 50%;
+    }
+
+    .search-ipt {
+        width: 40vw;
+    }
+
+    #carousel1 .owl img {
+        height: 50vw;
+    }
+
+}
+
+@media screen and (max-width: 540px) {
+    .bgTitle {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .bgTitle {
+        font-size: 1.5rem;
+    }
+
+    .icon {
+        width: 17vw;
+        height: 17vw;
+    }
+}
+
