@@ -1,0 +1,26 @@
+{
+  "name": "flyming_drone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hill0106/Flyming_Drone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hill0106/Flyming_Drone/issues"
+  },
+  "homepage": "https://github.com/hill0106/Flyming_Drone#readme",
+  "dependencies": {
+    "cheerio": "*",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "jquery": "^3.7.1",
+    "nodemon": "^3.1.0"
+  }
+}
