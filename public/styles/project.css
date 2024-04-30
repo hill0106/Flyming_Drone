@@ -1,13 +1,24 @@
-.topC ul .active {
-    border-bottom: 2px #159A9A solid; 
-    padding-bottom:5px; 
+.search-ipt {
+    width: 30vw;
+}
+.topC1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-left: 20px;
 }
 
-.topC ul a:hover {
+.topC1 ul .active {
+    border-bottom: 2px #159A9A solid; 
+    /* padding-bottom:5px;  */
+}
+
+.topC1 ul a:hover {
     color: #159A9A; 
 }
 
-.topC ul {
+.topC1 ul {
     list-style-type: none;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -18,14 +29,30 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 0;
 }
 
-.topC ul a {
+.topC1 ul button {
+    border: none;
     text-decoration: none;
     font-family: "Oswald", sans-serif;
     color: black;
+    font-size: 1vw;
+}
+
+.topC1 ul button:hover {
+    color: #159A9A;
+}
+
+.type-tab li {
+    margin: 0 1rem;
+}
+
+.search {
+    width: 80%;
+    margin-left: 1rem;
 }
 
 .project {
@@ -45,7 +72,7 @@
     display: flex;
     flex-direction: column;
     background: #F1F1F1;
-    height: 70vh;
+    height: 100vh;
 }
 
 #carousel2 {
@@ -111,7 +138,42 @@
 }
 
 .p-md-4 .w-100{
-    width: 25vw !important;
-    height: 15vw;
-    object-fit: fill;
+    /* width: 25vw !important; */
+    height: 25vw;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .search-ipt {
+        width: 60vw;
+    }
+
+    .project {
+        flex-direction: column;
+    }
+
+    .p-md-4 .w-100{
+        /* width: 25vw !important; */
+        height: 35vw;
+    }
+
+    .projectC {
+        height: 80vh;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+
+    .projectC {
+        height: auto;
+    }
+
+    .topC1 ul button {
+        font-size: 4vw;
+    }
+
+    .topC1 {
+        margin-left: 0;
+    }
 }
