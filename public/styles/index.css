@@ -7,7 +7,11 @@
   
 body {
     position: relative;
+    height: 100%;
+    margin: 0; /* Reset default margins */
+    padding: 0; /* Reset default padding */
 }
+
 
 .nav-menu {
     display: flex;
@@ -22,8 +26,10 @@ body {
 }
 
 .bg-dark {
+    display: flex;
+    align-items: center;
     transition: all 0.25s ease-in;
-    height: auto;
+    height: 20vh;
     width: 100%;
     background-color: #B2D3D3!important;
 }
@@ -75,6 +81,10 @@ nav ul a:hover {
 
 .navbar-brand {
    width: 40%;
+}
+
+.nav-link {
+    font-size: 2.2rem;
 }
 
 .navbar-dark .navbar-toggler {
@@ -132,7 +142,7 @@ nav ul a:hover {
 .blueRec {
     background: #03FFFF;
     width: 10px;
-    height: 10vh;
+    height: 8vh;
 }
 
 .titleC {
@@ -160,8 +170,9 @@ nav ul a:hover {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    height: 100vh;
 }
 
 .latest {
@@ -300,6 +311,17 @@ hr.solid {
         font-size: 4rem;
     }
 
+    .nav-link {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    
+    .vsc-initialized .bg-dark {
+        height: 10vh;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -328,6 +350,10 @@ hr.solid {
         height: 50vw;
     }
 
+    .bg-dark {
+        height: 10vh;
+    }
+
 }
 
 @media screen and (max-width: 540px) {
@@ -348,6 +374,10 @@ hr.solid {
     .icon {
         width: 17vw;
         height: 17vw;
+    }
+
+    .blueRec {
+        height: 8vh;
     }
 }
 
