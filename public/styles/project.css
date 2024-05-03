@@ -39,7 +39,7 @@
     text-decoration: none;
     font-family: "Oswald", sans-serif;
     color: black;
-    font-size: 1vw;
+    font-size: 1.2vw;
 }
 
 .topC1 ul button:hover {
@@ -62,6 +62,10 @@
     display: flex;
 }
 
+.stretched-link {
+    text-decoration: underline;
+}
+
 .L {
     display: flex;
     flex-direction: column;
@@ -72,7 +76,7 @@
     display: flex;
     flex-direction: column;
     background: #F1F1F1;
-    height: 100vh;
+    height: auto;
 }
 
 #carousel2 {
@@ -157,17 +161,10 @@
         height: 35vw;
     }
 
-    .projectC {
-        height: 80vh;
-    }
-
 }
 
 @media screen and (max-width: 450px) {
 
-    .projectC {
-        height: auto;
-    }
 
     .topC1 ul button {
         font-size: 4vw;
