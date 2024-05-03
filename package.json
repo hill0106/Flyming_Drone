@@ -17,10 +17,12 @@
   },
   "homepage": "https://github.com/hill0106/Flyming_Drone#readme",
   "dependencies": {
+    "axios": "^1.6.8",
     "cheerio": "*",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "jquery": "^3.7.1",
+    "node-fetch": "^2.6.1",
     "nodemon": "^3.1.0"
   }
 }
