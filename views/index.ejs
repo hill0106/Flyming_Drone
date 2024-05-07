@@ -70,26 +70,71 @@
 
 
     <div class="postC">
-        <div class="topC">
-            <h1 class="latest">Latest Posts</h1>
-            <div class="mb-3 search">
-                <input type="text" class="form-control search-ipt" id="livebox" placeholder="Search">
+      <div class="container">
+        <div class="channel-info">
+            <h2>About My YouTube Channel ––– @smcming</h2>
+            <p>Welcome to my YouTube channel! I'm Ming, and I'm here to share my passion for flying, biking, and filming trains with you. Join me on exciting adventures and don't hesitate to share your thoughts. Thanks for watching!</p>
+            <p> 歡迎來到我的YouTube頻道！我是Ming，我想和大家分享我的飛行、自行車和拍攝火車的樂趣。跟我一起來冒險，歡迎分享你的想法。謝謝觀看！</p>
+            <div class="container">                      
+              <div class="row">
+                  <div class="col">
+                      <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                          <div class="timeline-step">
+                              <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2003">
+                                  <div class="inner-circle"><i class="fa-solid fa-rocket"></i></div>
+                                  <p class="h6 mt-3 mb-1">2011-02-15</p>
+                                  <p class="h6 text-muted mb-0 mb-lg-0">@smcming Channel Founded</p>
+                              </div>
+                          </div>
+                          <div class="timeline-step">
+                              <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2004">
+                                  <div class="inner-circle"><i class="fa-solid fa-trophy"></i></div>
+                                  <p class="h6 mt-3 mb-1">2024-05-05</p>
+                                  <p class="h6 text-muted mb-0 mb-lg-0">Channel Reach 500 Subscribers</p>
+                              </div>
+                          </div>
+                          <div class="timeline-step">
+                              <div class="timeline-content" data-toggle="popover" data-trigger="hover" data-placement="top" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="2005">
+                                  <div class="inner-circle"><i class="fa-solid fa-clock"></i></div>
+                                  <p class="h6 mt-3 mb-1">Now</p>
+                                  <p class="h6 text-muted mb-0 mb-lg-0">Keep Going</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-label">Total Videos</div>
+                    <div class="stat-value"><%=channel.videoCount%></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Total Views</div>
+                    <div class="stat-value"><%=channel.viewCount%></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Subscribers</div>
+                    <div class="stat-value"><%=channel.subscriberCount%></div>
+                </div>
             </div>
+        </div>
+      </div>
+
+        <div class="topC">
+            <h1 class="latest">Top 10 Videos</h1>
         </div>
         <hr class="solid">
         <div class="owl-carousel owl-theme" id="carousel1">
+          <% topViewed.forEach(function(i){ %>
             <div class="owl">
-                <img src="https://images.unsplash.com/photo-1669201825198-bedf4966563e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80" />
-                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi natus repellendus velit est maxime. Eum quaerat ducimus in. Esse consequuntur iusto perferendis officiis similique fuga facere id excepturi cum deleniti.</h3>
+              <div class="owl-img">
+                <img src=<%=i.img_link%> alt="...">
+                <a href="<%= i.video_link %>" target="_blank" class="stretched-link"><i class="fa-brands fa-youtube" style="color: red; margin-right: 5px; font-size: 50px;"></i></a>
+              </div>
+                <h2><%=i.video_title%></h2>
             </div>
-            <div class="owl">
-                <img src="https://images.unsplash.com/photo-1669201825198-bedf4966563e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80" />
-                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi natus repellendus velit est maxime. Eum quaerat ducimus in. Esse consequuntur iusto perferendis officiis similique fuga facere id excepturi cum deleniti.</h3>
-            </div>
-            <div class="owl">
-                <img src="https://images.unsplash.com/photo-1669201825198-bedf4966563e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80" />
-                <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi natus repellendus velit est maxime. Eum quaerat ducimus in. Esse consequuntur iusto perferendis officiis similique fuga facere id excepturi cum deleniti.</h3>
-            </div>
+          <% }) %>
         </div>
     </div>
 </body>

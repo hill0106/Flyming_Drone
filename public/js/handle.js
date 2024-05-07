@@ -27,15 +27,15 @@ function handleTypeTab() {
                 let allProjectHTML = ``;
                 response.forEach(function(element) {
                   const projectHTML = `<div class="row g-0 position-relative">
-                    <div class="col-md-6 mb-md-0 p-md-4">
-                    ${element.video_player}
-                    </div>
+                  <div class="pj col-md-6 mb-md-0 p-md-4">
+                    <img src=${element.img_link} class="w-100" alt="...">
+                    <a href="${element.video_link}" target="_blank" class="stretched-link"><i class="fa-brands fa-youtube" style="color: red; margin-right: 5px; font-size: 50px;"></i></a>
+                  </div>
                     <div class="col-md-6 p-4 ps-md-0">
                       <h5 class="mt-0" style="font-size: 1.5rem;">${element.video_title}</h5>
                       <p style="font-size: 1.2rem;"><i class="fa-regular fa-calendar"></i> ${element.video_time}</p>
                       <p style="font-size: 1.2rem;">${element.video_des}</p>
-                      <a href=${element.video_link} class="stretched-link" style="font-size: 1.2rem;"><i class="fab fa-youtube" style="color: red; margin-right: 5px;"></i
-                        >Youtube link</a>
+                      
                     </div>
                   </div>`;
                   allProjectHTML += projectHTML;
