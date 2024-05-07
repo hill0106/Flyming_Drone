@@ -1,26 +1,128 @@
 const API_KEY = "AIzaSyBdxx-qUvI6-uiXcIwwArl6_VkL2Y8TW20";
-const CHANNEL_ID = 'CHANNEL_ID';
+const CHANNEL_ID = "UCeyGqH_5jRB1q5c0cZKWhiQ";
+const fetch = require("node-fetch");
 
-// fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&key=${API_KEY}`)
-//   .then(response => response.json())
-//   .then(data => {
-//     // Process the fetched data
-//     console.log(data);
-//   })
-//   .catch(error => console.error('Error fetching data:', error));
+async function getYoutubeDataByPlaylist(id) {
+    try {
+        const playlist_id_0 = "PLdfk1T6U5Zuo-GcyxBsA_aMInsy7r-Owk"; //鐵道
+        const playlist_id_1 = "PLdfk1T6U5ZuothN0pxnsac3H0zkGeM7d4"; //水庫
+        const playlist_id_2 = "PLdfk1T6U5ZurU1rZpvvu8DyST1-01MYq0"; //海濱
+        const playlist_id_3 = "PLdfk1T6U5ZuoKVgtQNshar4sULiX40NUJ"; //山上
+        const playlist_id_4 = "PLdfk1T6U5Zuru1ulidscYLzKnma7UljlY"; //城郊
+        let playlist_id = "";
+        if (id == 0) playlist_id = playlist_id_0;
+        if (id == 1) playlist_id = playlist_id_1;
+        if (id == 2) playlist_id = playlist_id_2;
+        if (id == 3) playlist_id = playlist_id_3;
+        if (id == 4) playlist_id = playlist_id_4;
 
+        let playlistItems_url = `https://www.googleapis.com/youtube/v3/playlistItems?order=date&part=snippet,contentDetails&playlistId=${playlist_id}&maxResults=10&key=${API_KEY}`;
+        let d = await fetch(playlistItems_url);
+        let djs = await d.json();
+        let items = djs.items;
 
-function getYoutubeDataByType(tab_id) {
-    const img_link_list = ['https://plus.unsplash.com/premium_photo-1670333183141-9e3ffc533dfa?q=80&w=2612&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1713365963723-655fa464b681?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1684091808620-5f214652f649?q=80&w=2748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1714584981219-850bec3bb612?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1669201825198-bedf4966563e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80'];
-    const videoData = {
-        img_link: img_link_list[tab_id],
-        video_title: "Sample Video Title",
-        video_time: "2023-05-10",
-        video_des: "This is a sample video description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        video_link:"https://example.com/video.mp4"
+        const allDataObject = items.map(item => {
+            const element = item.snippet;
+            const video_id = item.contentDetails.videoId;
+            if (checkPrivateVideo(element.title)) {
+                return {
+                    img_link: checkThumbNails(element.thumbnails),
+                    video_title: element.title,
+                    video_time: new Date(element.publishedAt).toGMTString().split("GMT")[0],
+                    video_des: element.description ,
+                    video_link: "https://www.youtube.com/video/"+video_id
+                }
+            }
+            else {
+                return null;
+            }
+        }).filter(Boolean);
+
+        return allDataObject;
     }
-
-    return videoData
+    catch (err) {
+        console.log("getYoutubeDataByPlaylist Error: " + err);
+    }
 }
 
-exports.getYoutubeDataByType = getYoutubeDataByType;
+async function getChannelData() {
+    try {
+        let channel_url = `https://www.googleapis.com/youtube/v3/channels?key=${API_KEY}&part=snippet,contentDetails,statistics&id=${CHANNEL_ID}`;
+        let d = await fetch(channel_url);
+        let djs = await d.json();
+        let items = djs.items;
+        let channelData = {}
+        items.map(item => {
+            channelData = {
+                viewCount: Number(item.statistics.viewCount).toLocaleString(),
+                subscriberCount: Number(item.statistics.subscriberCount).toLocaleString(),
+                videoCount: Number(item.statistics.videoCount).toLocaleString()
+            }
+        });
+        return channelData;
+    }
+    catch (err) {
+        console.log("getChannelData Error: " + err);
+    }
+
+    
+}
+
+
+async function getYoutubeDataByVideoId(id) {
+    try {
+        let video_id = id;
+        let video_url= `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&part=snippet,contentDetails,player&id=${video_id}`;
+        let v = await fetch(video_url);
+        let vjs = await v.json();
+        let player = vjs.items[0].player.embedHtml;
+        player = player.replace("//", "https://");
+        player = player.replace('referrerpolicy="strict-origin-when-cross-origin"','');
+        return player;
+    }
+    catch (error) {
+        console.log("getYoutubeDataByVideoId Error: " + error);
+    }
+}
+
+function checkThumbNails(thumbnails) {
+    let url = "";
+    if (thumbnails.maxres != undefined) url = thumbnails.maxres.url;
+    else if (thumbnails.high != undefined) url = thumbnails.high.url;
+    else if (thumbnails.standard != undefined) url = thumbnails.standard.url;
+    return url;
+}
+
+function checkPrivateVideo(title) {
+    if(title != "Private video") return true;
+    else return false;
+}
+
+
+
+async function getTopViewedData() {
+    try{
+        let url = `https://www.googleapis.com/youtube/v3/search?order=viewCount&part=snippet&type=video&maxResults=10&channelId=${CHANNEL_ID}&key=${API_KEY}`;
+        let d = await fetch(url)
+        let djs = await d.json();
+        let items = djs.items;
+
+        const topViewedData = items.map(i => {
+            let video_id = i.id.videoId;
+            return {
+                img_link: checkThumbNails(i.snippet.thumbnails),
+                video_title: i.snippet.title,
+                video_link: "https://www.youtube.com/video/"+video_id
+            }
+        });
+
+        
+        return topViewedData;
+    }
+    catch (err) {
+        console.log("getTopViewedData: " + err);
+    }
+}
+exports.getYoutubeDataByPlaylist = getYoutubeDataByPlaylist;
+exports.getChannelData = getChannelData;
+exports.getTopViewedData = getTopViewedData;

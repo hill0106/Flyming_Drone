@@ -1,2 +1,4 @@
-let getYoutubeVideo = require("./youtube");
-exports.getYoutubeVideo = getYoutubeVideo.getYoutubeDataByType;
+let getYoutube = require("./youtube");
+exports.getYoutubeDataByPlaylist = getYoutube.getYoutubeDataByPlaylist;
+exports.getChannelData = getYoutube.getChannelData;
+exports.getTopViewedData = getYoutube.getTopViewedData;
