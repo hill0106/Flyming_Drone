@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
-const $ = require("jquery");
 const fetch = require("node-fetch");
 
 // Youtube API
@@ -17,8 +16,10 @@ app.use(bodyParser.json());
 
 
 // routing
-app.get("/", (req, res) => {
-    res.render("index.ejs");
+app.get("/", async (req, res) => {
+    let channel = await getChannelData();
+    let topViewed = await getTopViewedData();
+    res.render("index.ejs", {channel: channel, topViewed: topViewed});
 });
 
 app.get("/aboutme", (req, res) => {
@@ -66,92 +67,71 @@ app.listen(2000, () => {
 
 
 async function getYoutubeDataByPlaylist(id) {
-    const playlist_id_0 = "PLdfk1T6U5Zuo-GcyxBsA_aMInsy7r-Owk"; //鐵道
-    const playlist_id_1 = "PLdfk1T6U5ZuothN0pxnsac3H0zkGeM7d4"; //水庫
-    const playlist_id_2 = "PLdfk1T6U5ZurU1rZpvvu8DyST1-01MYq0"; //海濱
-    const playlist_id_3 = "PLdfk1T6U5ZuoKVgtQNshar4sULiX40NUJ"; //山上
-    const playlist_id_4 = "PLdfk1T6U5Zuru1ulidscYLzKnma7UljlY"; //城郊
-    let playlist_id = "";
-    if (id == 0) playlist_id = playlist_id_0;
-    if (id == 1) playlist_id = playlist_id_1;
-    if (id == 2) playlist_id = playlist_id_2;
-    if (id == 3) playlist_id = playlist_id_3;
-    if (id == 4) playlist_id = playlist_id_4;
+    try {
+        const playlist_id_0 = "PLdfk1T6U5Zuo-GcyxBsA_aMInsy7r-Owk"; //鐵道
+        const playlist_id_1 = "PLdfk1T6U5ZuothN0pxnsac3H0zkGeM7d4"; //水庫
+        const playlist_id_2 = "PLdfk1T6U5ZurU1rZpvvu8DyST1-01MYq0"; //海濱
+        const playlist_id_3 = "PLdfk1T6U5ZuoKVgtQNshar4sULiX40NUJ"; //山上
+        const playlist_id_4 = "PLdfk1T6U5Zuru1ulidscYLzKnma7UljlY"; //城郊
+        let playlist_id = "";
+        if (id == 0) playlist_id = playlist_id_0;
+        if (id == 1) playlist_id = playlist_id_1;
+        if (id == 2) playlist_id = playlist_id_2;
+        if (id == 3) playlist_id = playlist_id_3;
+        if (id == 4) playlist_id = playlist_id_4;
 
-    let playlistItems_url = `https://www.googleapis.com/youtube/v3/playlistItems?order=date&part=snippet,contentDetails&playlistId=${playlist_id}&maxResults=10&key=${API_KEY}`;
-    let d = await fetch(playlistItems_url);
-    let djs = await d.json();
-    let items = djs.items;
-    let video_id_list = []; 
-    let img_link_list = [];
-    let video_title_list = [];
-    let video_time_list = [];
-    let video_des_list = [];
-    let video_link_list = [];
-    items.map(item => {
-        const element = item.snippet;
-        const video_id = item.contentDetails.videoId;
-        if (checkPrivateVideo(element.title)) {
-            video_id_list.push(video_id);
-            img_link_list.push(checkThumbNails(element.thumbnails));
-            video_title_list.push(element.title);
-            video_time_list.push(new Date(element.publishedAt).toGMTString().split("GMT")[0]);
-            video_des_list.push(element.description);
-            video_link_list.push("https://www.youtube.com/video/"+video_id);
-        }
-        else {
-            return null; // Exclude the item if it doesn't meet the condition
-        }
-    }).filter(Boolean); // Filter out null values
+        let playlistItems_url = `https://www.googleapis.com/youtube/v3/playlistItems?order=date&part=snippet,contentDetails&playlistId=${playlist_id}&maxResults=10&key=${API_KEY}`;
+        let d = await fetch(playlistItems_url);
+        let djs = await d.json();
+        let items = djs.items;
 
-    // Wait for a certain amount of time using setTimeout
-    await new Promise((resolve) => {
-        setTimeout(resolve, 3000); // Wait for 3 seconds
-    });
-    allDataObject = [];
-    for(let i = 0 ; i < video_id_list.length; i++) {
-        let player = await getYoutubeDataByVideoId(video_id_list[i]);
-        const dataObject =  {
-            img_link: img_link_list[i],
-            video_title: video_title_list[i],
-            video_time: video_time_list[i],
-            video_des: video_des_list[i] ,
-            video_link: video_link_list[i],
-            video_player: player
-        }
-        allDataObject.push(dataObject);
+        const allDataObject = items.map(item => {
+            const element = item.snippet;
+            const video_id = item.contentDetails.videoId;
+            if (checkPrivateVideo(element.title)) {
+                return {
+                    img_link: checkThumbNails(element.thumbnails),
+                    video_title: element.title,
+                    video_time: new Date(element.publishedAt).toGMTString().split("GMT")[0],
+                    video_des: element.description ,
+                    video_link: "https://www.youtube.com/video/"+video_id
+                }
+            }
+            else {
+                return null;
+            }
+        }).filter(Boolean);
+
+        return allDataObject;
     }
-
-    return allDataObject;
+    catch (err) {
+        console.log("getYoutubeDataByPlaylist Error: " + err);
+    }
 }
 
-async function fetchApis() {
+async function getChannelData() {
     try {
-      // Fetch the first API
-      const response1 = await fetch('first_api_url');
-      const data1 = await response1.json();
-  
-      // Process the result of the first API
-      const result1 = data1.someData;
-  
-      // Wait for a certain amount of time using setTimeout
-      await new Promise((resolve) => {
-        setTimeout(resolve, 3000); // Wait for 3 seconds
-      });
-  
-      // Fetch the second API using the result of the first API
-      const response2 = await fetch(`second_api_url/${result1}`);
-      const data2 = await response2.json();
-  
-      // Process the result of the second API
-      const result2 = data2.someData;
-  
-      // Do something with the final result
-      console.log(result2);
-    } catch (error) {
-      console.error('Error:', error);
+        let channel_url = `https://www.googleapis.com/youtube/v3/channels?key=${API_KEY}&part=snippet,contentDetails,statistics&id=${CHANNEL_ID}`;
+        let d = await fetch(channel_url);
+        let djs = await d.json();
+        let items = djs.items;
+        let channelData = {}
+        items.map(item => {
+            channelData = {
+                viewCount: Number(item.statistics.viewCount).toLocaleString(),
+                subscriberCount: Number(item.statistics.subscriberCount).toLocaleString(),
+                videoCount: Number(item.statistics.videoCount).toLocaleString()
+            }
+        });
+        return channelData;
     }
-  }
+    catch (err) {
+        console.log("getChannelData Error: " + err);
+    }
+
+    
+}
+
 
 async function getYoutubeDataByVideoId(id) {
     try {
@@ -161,6 +141,7 @@ async function getYoutubeDataByVideoId(id) {
         let vjs = await v.json();
         let player = vjs.items[0].player.embedHtml;
         player = player.replace("//", "https://");
+        player = player.replace('referrerpolicy="strict-origin-when-cross-origin"','');
         return player;
     }
     catch (error) {
@@ -183,11 +164,26 @@ function checkPrivateVideo(title) {
 
 
 
-async function getYoutubeAPI() {
-    let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&key=${API_KEY}`;
-    let d = await fetch(url)
-    let djs = await d.json();
-    // console.log(djs);
-    //console.log(djs.items);
-    
+async function getTopViewedData() {
+    try{
+        let url = `https://www.googleapis.com/youtube/v3/search?order=viewCount&part=snippet&type=video&maxResults=10&channelId=${CHANNEL_ID}&key=${API_KEY}`;
+        let d = await fetch(url)
+        let djs = await d.json();
+        let items = djs.items;
+
+        const topViewedData = items.map(i => {
+            let video_id = i.id.videoId;
+            return {
+                img_link: checkThumbNails(i.snippet.thumbnails),
+                video_title: i.snippet.title,
+                video_link: "https://www.youtube.com/video/"+video_id
+            }
+        });
+
+        
+        return topViewedData;
+    }
+    catch (err) {
+        console.log("getTopViewedData: " + err);
+    }
 }

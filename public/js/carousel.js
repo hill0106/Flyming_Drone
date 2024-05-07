@@ -10,7 +10,9 @@ window.addEventListener("scroll", e => {
 
 $(document).ready(function(){
     $("#carousel1").owlCarousel({
-        loop: true, // 循環播放
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
         margin: 30, // 外距 10px
         responsiveClass:true,
         responsive: {
@@ -27,7 +29,9 @@ $(document).ready(function(){
       });
 
       $("#carousel2").owlCarousel({
-        loop: true, // 循環播放
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
         margin: 30, // 外距 10px
         responsiveClass:true,
         responsive: {

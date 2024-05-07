@@ -121,10 +121,6 @@ html, body {
 
 @media screen and (max-width: 1200px) {
 
-    .vsc-initialized main { 
-        height: auto;
-    }
-
     .fa-solid, .fas {
         font-size: 1rem;
     }
