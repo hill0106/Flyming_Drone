@@ -39,7 +39,7 @@
     text-decoration: none;
     font-family: "Oswald", sans-serif;
     color: black;
-    font-size: 1.2vw;
+    font-size: 1.2rem;
 }
 
 .topC1 ul button:hover {
@@ -60,6 +60,13 @@
     background: white;
     border-radius: 15px;
     display: flex;
+}
+
+.project-temp .pj{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .stretched-link {
@@ -147,6 +154,13 @@
     object-fit: cover;
 }
 
+.stretched-link {
+    position: absolute; 
+    font-size: 50px; 
+    color: red;
+}
+
+
 @media screen and (max-width: 768px) {
     .search-ipt {
         width: 60vw;
@@ -156,14 +170,9 @@
         flex-direction: column;
     }
 
-    .p-md-4 .w-100{
-        /* width: 25vw !important; */
-        height: 35vw;
-    }
-
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 540px) {
 
 
     .topC1 ul button {
@@ -172,5 +181,10 @@
 
     .topC1 {
         margin-left: 0;
+    }
+
+    .p-md-4 .w-100 {
+        width: 90vw !important;   
+        height: 50vw;
     }
 }
