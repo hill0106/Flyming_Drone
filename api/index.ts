@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-const ejs = require("ejs");
 const bodyParser = require("body-parser");
+const ejs = require("ejs");
 
 // youtube API
-const youtube = require("./youtube");
+const youtube = require("../youtube");
 
 
 
@@ -47,7 +47,7 @@ app.get("/contact", (req, res) => {
 app.get("*", (req, res) => {
 	res.status(404);
     // console.log(res.statusCode);
-    code = res.statusCode;
+    let code = res.statusCode;
     res.render("common.ejs", {code:code});
     // res.sendFile(__dirname + "/common.html");
 });
@@ -59,9 +59,9 @@ app.post("/submitted", (req, res) => {
     res.render("common.ejs", {name: name, code: res.statusCode});
 })
 
-// app.listen(2000, () => {
-//     console.log("on port 2000");
-// });
+app.listen(2000, () => {
+    console.log("on port 2000");
+});
 
 
 
