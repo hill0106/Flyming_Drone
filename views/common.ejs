@@ -6,7 +6,7 @@
     <% if (code == 404){ %>
         <title>404 Not Found</title>
     <% }
-    else if (code == 200 && name != ""){ %>
+    else if (code == 200 && reply.name != ""){ %>
         <title>Contact Submmitted</title>
     <% } %>
     <link rel="stylesheet" href="../styles/style.css">
@@ -15,6 +15,22 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://kit.fontawesome.com/6505e56344.js" crossorigin="anonymous"></script>
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+
+    .reply p {
+        margin: 10px 0;
+        font-size: large;
+    }
+
+    .subject {
+        font-weight: bold;
+        color: #333;
+    }
+</style>
 <body>
     <div class="container" style="display: flex; justify-content: center; margin-top: 50px;">
         <div class="row">
@@ -28,12 +44,24 @@
                             <h4>Sorry, an error has occured, Requested page not found!</h4>
                         </div>
                     <% }
-                    else if (code == 200 && name != ""){ %>
+                    else if (code == 200 && reply.name != ""){ %>
                         <!-- Contact form fininshed -->
-                        <h1>Hi, <%=name%></h1>
-                        <h2>your sumbit is successful!</h2>
-                        <div class="error-details">
-                            <h4>I'll reply to you as soon as possible. <i class="fa-regular fa-face-smile"></i></h4>
+                        <div class="reply">
+                            <p><%=reply.name%> 先生/小姐您好，</p>
+                            <br>
+                            <p>非常感謝您的來信！我收到了您的消息，並且會盡快回覆您。</p>
+                            <p>以下是您提供的信息</p>
+                            <br>
+                            <p class="subject">[<%=reply.subject%>]</p>
+                            <p><%=reply.content%></p>
+                            <br>
+                            <br>
+                            <p>如果您對我的攝影作品或者我的網頁有任何問題或建議</p>
+                            <p>都可以隨時與我聯絡，我很樂意提供協助!</p>
+                            <br>
+                            <br>
+                            <p>祝您順心！</p>
+                            <p>Flyming Drone</p>
                         </div>
                     <% } %>
                     <!-- Homepage button -->
