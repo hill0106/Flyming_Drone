@@ -102,7 +102,7 @@ function checkPrivateVideo(title) {
 
 async function getTopViewedData() {
     try{
-        let url = `https://www.googleapis.com/youtube/v3/search?order=viewCount&part=snippet&type=video&maxResults=10&channelId=${CHANNEL_ID}&key=${API_KEY}`;
+        let url = `https://www.googleapis.com/youtube/v3/search?order=viewCount&part=snippet&videoDefinition=any&maxResults=10&videoLicense=any&videoType=any&videoDuration=any&channelId=${CHANNEL_ID}&key=${API_KEY}`;
         let d = await fetch(url)
         let djs = await d.json();
         let items = djs.items;
