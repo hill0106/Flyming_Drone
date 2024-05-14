@@ -25,7 +25,7 @@ function handleTypeTab() {
             data: JSON.stringify({ data: Id }), // Data to send (converted to JSON)
             success: function(response) {
                 let allProjectHTML = ``;
-                response.forEach(function(element) {
+                response.map(element => {
                   const projectHTML = `<div class="row g-0 position-relative">
                   <div class="pj col-md-6 mb-md-0 p-md-4">
                     <img src=${element.img_link} class="w-100" alt="...">
@@ -35,7 +35,8 @@ function handleTypeTab() {
                       <h5 class="mt-0" style="font-size: 1.5rem;">${element.video_title}</h5>
                       <p style="font-size: 1.2rem;"><i class="fa-regular fa-calendar"></i> ${element.video_time}</p>
                       <p style="font-size: 1.2rem;">${element.video_des}</p>
-                      
+                      <span class="badge text-bg-secondary" style="font-size: 1.3rem;  margin-right: 5px;"><i class="fa-solid fa-eye"></i> 觀看次數 ${element.view_count }</span>
+                      <span class="badge text-bg-primary" style="font-size: 1.3rem;"><i class="fa-solid fa-thumbs-up"></i> 按讚 ${element.like_count }</span>
                     </div>
                   </div>`;
                   allProjectHTML += projectHTML;

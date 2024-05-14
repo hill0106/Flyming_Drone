@@ -363,7 +363,7 @@ hr.solid {
     color:white
 }
 
-#carousel1 {
+#carousel1, #carousel2{
     margin: 20px 0px;
     width: 90vw;
 }
@@ -374,7 +374,7 @@ hr.solid {
     object-fit: cover;
 }
 
-#carousel1 .owl h2 {
+#carousel1 .owl h2, #carousel2 .owl h2 {
     font-size: 1.2rem;
     font-weight: 500;
     margin: 15px;
@@ -494,7 +494,7 @@ hr.solid {
         width: 40vw;
     }
 
-    #carousel1 .owl img {
+    #carousel1 .owl img, #carousel2 .owl img  {
         height: 50vw;
     }
 /* 
