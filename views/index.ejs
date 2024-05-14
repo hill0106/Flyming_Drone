@@ -102,8 +102,9 @@
                           </div>
                       </div>
                   </div>
+                </div>
               </div>
-          </div>
+         
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-label">Total Videos</div>
@@ -118,9 +119,9 @@
                     <div class="stat-value"><%=channel.subscriberCount%></div>
                 </div>
             </div>
+            
         </div>
       </div>
-
         <div class="topC">
             <h1 class="latest">Popular Videos</h1>
         </div>
@@ -135,6 +136,25 @@
                 <h2><%=i.video_title%></h2>
             </div>
           <% }) %>
+        
+        </div>
+
+        <div class="topC">
+            <h1 class="latest">Latest Videos</h1>
+        </div>
+        <hr class="solid">
+        
+        <div class="owl-carousel owl-theme" id="carousel2">
+          <% latest.forEach(function(i){ %>
+            <div class="owl">
+              <div class="owl-img">
+                <img src=<%=i.img_link%> alt="...">
+                <a href="<%= i.video_link %>" target="_blank" class="stretched-link"><i class="fa-brands fa-youtube" style="color: red; margin-right: 5px; font-size: 50px;"></i></a>
+              </div>
+                <h2><%=i.video_title%></h2>
+            </div>
+          <% }) %>
+         
         </div>
     </div>
 </body>
