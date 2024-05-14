@@ -27,7 +27,7 @@ $(document).ready(function(){
           
         }
       });
-
+      
       $("#carousel2").owlCarousel({
         autoplay: true,
         autoplayTimeout: 5000,
@@ -37,8 +37,13 @@ $(document).ready(function(){
         responsive: {
           0: {
             items: 1,
-            nav: true,
+            nav: true
           },
+          600: {
+            items: 3, // 螢幕大小為 600~1000 顯示 3 個項目
+            nav: true
+          },
+          
         }
       });
 
