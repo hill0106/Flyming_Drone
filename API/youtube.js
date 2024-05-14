@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyBdxx-qUvI6-uiXcIwwArl6_VkL2Y8TW20";
+/*const API_KEY = "AIzaSyBdxx-qUvI6-uiXcIwwArl6_VkL2Y8TW20";
 const CHANNEL_ID = "UCeyGqH_5jRB1q5c0cZKWhiQ";
 
 const fetch = require("node-fetch");
@@ -198,5 +198,5 @@ async function getLatestVData() {
 }
 exports.getYoutubeDataByPlaylist = getYoutubeDataByPlaylist;
 exports.saveToLocal = saveToLocal;
-exports.getLatestVData = getLatestVData;
+exports.getLatestVData = getLatestVData;*/
 
