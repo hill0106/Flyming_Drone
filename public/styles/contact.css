@@ -23,14 +23,14 @@ html, body {
 
 .left .circle {
     background-color: #CEF2F2;
-    width: 3vw;
-    height: 3vw;
+    width: 2vw;
+    height: 2vw;
     border-radius: 50%;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .left .fa-solid {
@@ -74,7 +74,7 @@ html, body {
     color:#159A9A;
 }
 
-.right {
+.left {
     background: white;
     width: 35vw;
     border-radius: 15px;
@@ -100,8 +100,8 @@ html, body {
 
 .content {
     height: 15vw;
-    border: solid 0.08rem #159A9A;
     width: 30vw;
+    border: solid 0.08rem #159A9A;
 }
   
 
@@ -119,13 +119,47 @@ html, body {
     margin-bottom: 20px;
 }
 
+.left {
+    float: left;
+    width: 50%;
+    padding: 20px;
+}
+
+
+.f1 {
+    margin-bottom: 20px;
+}
+
+.f1 h3 {
+    color: #0C4545;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.sub {
+    margin-top: 20px;
+}
+
+
+.btn:hover {
+    background-color: #0A3C3C;
+}
+
 @media screen and (max-width: 1200px) {
 
     .fa-solid, .fas {
         font-size: 1rem;
     }
 
-    .right {
+    .left {
         height: 45%;
     }
 }
@@ -142,7 +176,7 @@ html, body {
     .c1 h3 {
         font-size: large;
     }
-    .right {
+    .left {
         height: 60%;
         width: 40vw;
     }
@@ -165,7 +199,7 @@ html, body {
     .c1 h3 {
         font-size: large;
     }
-    .right {
+    .left {
         width: 90vw;
         margin: 0;
         margin-left: 6vw;
