@@ -1,4 +1,4 @@
-/*const API_KEY = "AIzaSyBdxx-qUvI6-uiXcIwwArl6_VkL2Y8TW20";
+const API_KEY = "AIzaSyBdxx-qUvI6-uiXcIwwArl6_VkL2Y8TW20";
 const CHANNEL_ID = "UCeyGqH_5jRB1q5c0cZKWhiQ";
 
 const fetch = require("node-fetch");
@@ -166,7 +166,7 @@ function checkPrivateVideo(title) {
 }
 
 async function countPopularVideos() {
-    const all = await getAllPlaylistData();
+    const all = await JSON.parse(storage.getItem('playlist'));
     all.sort((a, b) => {
         return parseInt(b.view_count) - parseInt(a.view_count);
     });
@@ -198,5 +198,5 @@ async function getLatestVData() {
 }
 exports.getYoutubeDataByPlaylist = getYoutubeDataByPlaylist;
 exports.saveToLocal = saveToLocal;
-exports.getLatestVData = getLatestVData;*/
+exports.getLatestVData = getLatestVData;
 

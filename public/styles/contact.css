@@ -1,9 +1,7 @@
 main {
     background: #f5f5f5;
     display: flex;
-    justify-content: space-between;
-    min-height: 100vh;
-    /* height: 90vh; */
+    justify-content: center;
 }
 
 html, body {
@@ -17,25 +15,14 @@ html, body {
 .left {
     display: flex;
     flex-direction: column;
-    margin-left: 6vw;
-    width: 40vw;
+    align-items: center;
 }
 
-.left .circle {
-    background-color: #CEF2F2;
-    width: 2vw;
-    height: 2vw;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-}
 
 .left .fa-solid {
     position: absolute;
     color: #159A9A;
+    margin: 20px;
 }
 
 .fa-solid, .fas {
@@ -47,10 +34,16 @@ html, body {
     flex-direction: column;
     justify-content: space-around;
     height: 15vw;
-    width: 30vw;
+    width: 80vw;
     background: white;
     border-radius: 15px;
     margin: 30px 0px;
+}
+
+.left form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .c1 {
@@ -74,14 +67,6 @@ html, body {
     color:#159A9A;
 }
 
-.left {
-    background: white;
-    width: 35vw;
-    border-radius: 15px;
-    margin: 30px;
-    margin-right: 5vw;
-    height: 35%;
-}
 
 .f1 {
     margin: 20px 30px;
@@ -95,12 +80,12 @@ html, body {
 
 .f1 input {
     border: solid 0.08rem #159A9A;
-    width: 30vw;
+    width: 45vw;
 }
 
 .content {
     height: 15vw;
-    width: 30vw;
+    width: 45vw;
     border: solid 0.08rem #159A9A;
 }
   
@@ -119,39 +104,6 @@ html, body {
     margin-bottom: 20px;
 }
 
-.left {
-    float: left;
-    width: 50%;
-    padding: 20px;
-}
-
-
-.f1 {
-    margin-bottom: 20px;
-}
-
-.f1 h3 {
-    color: #0C4545;
-    margin-bottom: 5px;
-}
-
-.form-control {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1rem;
-}
-
-.sub {
-    margin-top: 20px;
-}
-
-
-.btn:hover {
-    background-color: #0A3C3C;
-}
 
 @media screen and (max-width: 1200px) {
 
@@ -159,26 +111,12 @@ html, body {
         font-size: 1rem;
     }
 
-    .left {
-        height: 45%;
-    }
 }
 
 @media screen and (max-width: 768px) {
-    .left, .contact-card {
-        width: 45vw;
-        height: 40vw;
-    }
-    .left .circle {
-        width: 5vw;
-        height: 5vw;
-    }
+   
     .c1 h3 {
         font-size: large;
-    }
-    .left {
-        height: 60%;
-        width: 40vw;
     }
 }
 
@@ -188,22 +126,11 @@ html, body {
         flex-direction: column;
         height: auto;
     }
-    .left, .contact-card {
-        width: 85vw;
-        height: 80vw;
-    }
-    .left .circle {
-        width: 10vw;
-        height: 10vw;
-    }
+   
     .c1 h3 {
         font-size: large;
     }
-    .left {
-        width: 90vw;
-        margin: 0;
-        margin-left: 6vw;
-    }
+  
     .f1 input {
         width: 70vw;
     }
