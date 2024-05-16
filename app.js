@@ -36,13 +36,17 @@ scheduleTask();
 
 // routing
 app.get("/", (req, res) => {
-    
-    let channel = JSON.parse(storage.getItem('channel')) ;
-    let latest = JSON.parse(storage.getItem('latest'));
-    let topViewed = JSON.parse(storage.getItem('top10'));
+    try {
+        let channel = JSON.parse(storage.getItem('channel')) ;
+        let latest = JSON.parse(storage.getItem('latest'));
+        let topViewed = JSON.parse(storage.getItem('top10'));
 
-    res.render("index.ejs", {channel: channel, topViewed: topViewed, latest: latest});
-
+        res.render("index.ejs", {channel: channel, topViewed: topViewed, latest: latest});
+    }
+    catch(err) {
+        console.log(err);
+        res.render("index.ejs")
+    }
 });
 
 app.get("/aboutme", (req, res) => {
@@ -52,15 +56,21 @@ app.get("/aboutme", (req, res) => {
 app.post("/send-data", async (req, res) => {
     const tab_id = req.body.data; // Get the data sent from the frontend
     const id = parseInt(tab_id)-1;
-    let data = await API.getYoutubeDataByPlaylist(id);
-    
+    await API.getYoutubeDataByPlaylist(id);
+    let data = JSON.parse(storage.getItem('playlist'+String(id)));
     res.json(data);
 })
 
 app.get("/project", async (req, res) => {
-    let data = await API.getYoutubeDataByPlaylist(0);
-    // console.log(data);
-    res.render("Project.ejs", {data});
+    try {
+        await API.getYoutubeDataByPlaylist(0);
+        let data = JSON.parse(storage.getItem('playlist0'));
+        res.render("Project.ejs", {data});
+    }
+    catch(err) {
+        console.log(err);
+        res.render("Project.ejs")
+    }
 });
 
 app.get("/contact", (req, res) => {
