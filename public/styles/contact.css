@@ -25,6 +25,10 @@ html, body {
     margin: 20px;
 }
 
+.left h4 {
+    font-size: large;
+}
+
 .fa-solid, .fas {
     font-size: 1.5rem;
 }

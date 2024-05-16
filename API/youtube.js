@@ -176,25 +176,32 @@ async function countPopularVideos() {
 }
 
 async function getLatestVData() {
-    try{
-        let url = `https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&&maxResults=10&channelId=${CHANNEL_ID}&key=${API_KEY}`;
-        let d = await fetch(url)
-        let djs = await d.json();
-        let items = djs.items;
+    // try{
+    //     let url = `https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&&maxResults=10&type=video&channelId=${CHANNEL_ID}&key=${API_KEY}`;
+    //     let d = await fetch(url)
+    //     let djs = await d.json();
+    //     let items = djs.items;
 
-        const latestData = items.map(i => {
-            let video_id = i.id.videoId;
-            return {
-                img_link: checkThumbNails(i.snippet.thumbnails),
-                video_title: i.snippet.title,
-                video_link: "https://www.youtube.com/video/"+video_id
-            }
-        });
-        return latestData;
-    }
-    catch (err) {
-        console.log("getLatestVData: " + err);
-    }
+    //     const latestData = items.map(i => {
+    //         let video_id = i.id.videoId;
+    //         return {
+    //             img_link: checkThumbNails(i.snippet.thumbnails),
+    //             video_title: i.snippet.title,
+    //             video_link: "https://www.youtube.com/video/"+video_id
+    //         }
+    //     });
+    //     return latestData;
+    // }
+    // catch (err) {
+    //     console.log("getLatestVData: " + err);
+    // }
+    const all = await JSON.parse(storage.getItem('playlist'));
+    all.sort((a, b) => {
+        return b.video_time - a.video_time;
+    });
+    const latest = all.slice(0, 10);
+    // console.log(latest);
+    return latest;
 }
 exports.getYoutubeDataByPlaylist = getYoutubeDataByPlaylist;
 exports.saveToLocal = saveToLocal;
