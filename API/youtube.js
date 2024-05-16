@@ -6,17 +6,17 @@ const localStorage = require('node-localstorage').LocalStorage;
 const storage = new localStorage('./data');
 
 async function saveToLocal() {
-    let channelData = await getChannelData();
-    let latestData = await getLatestVData();
     let allPlaylistData = await getAllPlaylistData();
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    let top10 = await countPopularVideos();
-
-
+    storage.setItem('allPlaylists', JSON.stringify(allPlaylistData));
+    let channelData = await getChannelData();
     storage.setItem('channel', JSON.stringify(channelData));
-    storage.setItem('latest', JSON.stringify(latestData));
-    storage.setItem('playlist', JSON.stringify(allPlaylistData));
-    storage.setItem('top10', JSON.stringify(top10));
+
+    await getLatestVData();
+    
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    await countPopularVideos();
+
 }
 
 async function getAllPlaylistData() {
@@ -56,18 +56,28 @@ async function getAllPlaylistData() {
 
 async function getYoutubeDataByPlaylist(id) {
     try {
-        let playlists = await JSON.parse(storage.getItem('playlist'));
+        let playlists = await JSON.parse(storage.getItem('allPlaylists'));
         let playlist;
-        if (id == 0) playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5Zuo-GcyxBsA_aMInsy7r-Owk');
-        if (id == 1) playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5ZuothN0pxnsac3H0zkGeM7d4');
-        if (id == 2) playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5ZurU1rZpvvu8DyST1-01MYq0');
-        if (id == 3) playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5ZuoKVgtQNshar4sULiX40NUJ');
-        if (id == 4) playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5Zuru1ulidscYLzKnma7UljlY');
-                
-
-    
-        // console.log(playlist);
-        return playlist;
+        if (id == 0) {
+            playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5Zuo-GcyxBsA_aMInsy7r-Owk');
+            storage.setItem('playlist0', JSON.stringify(playlist));
+        }
+        if (id == 1) {
+            playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5ZuothN0pxnsac3H0zkGeM7d4');
+            storage.setItem('playlist1', JSON.stringify(playlist));
+        }
+        if (id == 2) {
+            playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5ZurU1rZpvvu8DyST1-01MYq0');
+            storage.setItem('playlist2', JSON.stringify(playlist));
+        }
+        if (id == 3) {
+            playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5ZuoKVgtQNshar4sULiX40NUJ');
+            storage.setItem('playlist3', JSON.stringify(playlist));
+        }
+        if (id == 4) {
+            playlist = playlists.filter(i => i.playlist_id === 'PLdfk1T6U5Zuru1ulidscYLzKnma7UljlY');
+            storage.setItem('playlist4', JSON.stringify(playlist));
+        }
         
     }
     catch (err) {
@@ -166,44 +176,22 @@ function checkPrivateVideo(title) {
 }
 
 async function countPopularVideos() {
-    const all = await JSON.parse(storage.getItem('playlist'));
+    const all = await JSON.parse(storage.getItem('allPlaylists'));
     all.sort((a, b) => {
         return parseInt(b.view_count) - parseInt(a.view_count);
     });
     const top10 = all.slice(0, 10);
-    // console.log(top10);
-    return top10;
+    storage.setItem('top10', JSON.stringify(top10));
 }
 
 async function getLatestVData() {
-    // try{
-    //     let url = `https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&&maxResults=10&type=video&channelId=${CHANNEL_ID}&key=${API_KEY}`;
-    //     let d = await fetch(url)
-    //     let djs = await d.json();
-    //     let items = djs.items;
-
-    //     const latestData = items.map(i => {
-    //         let video_id = i.id.videoId;
-    //         return {
-    //             img_link: checkThumbNails(i.snippet.thumbnails),
-    //             video_title: i.snippet.title,
-    //             video_link: "https://www.youtube.com/video/"+video_id
-    //         }
-    //     });
-    //     return latestData;
-    // }
-    // catch (err) {
-    //     console.log("getLatestVData: " + err);
-    // }
-    const all = await JSON.parse(storage.getItem('playlist'));
+    const all = await JSON.parse(storage.getItem('allPlaylists'));
     all.sort((a, b) => {
         return b.video_time - a.video_time;
     });
     const latest = all.slice(0, 10);
-    // console.log(latest);
-    return latest;
+    storage.setItem('latest', JSON.stringify(latest));
 }
 exports.getYoutubeDataByPlaylist = getYoutubeDataByPlaylist;
 exports.saveToLocal = saveToLocal;
 exports.getLatestVData = getLatestVData;
-
