@@ -1,5 +1,5 @@
-const API_KEY = "AIzaSyBdxx-qUvI6-uiXcIwwArl6_VkL2Y8TW20";
-const CHANNEL_ID = "UCeyGqH_5jRB1q5c0cZKWhiQ";
+const API_KEY = process.env.API_KEY;
+const CHANNEL_ID = process.env.CHANNEL_ID;
 
 const fetch = require("node-fetch");
 const localStorage = require('node-localstorage').LocalStorage;
