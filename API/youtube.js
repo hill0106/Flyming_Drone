@@ -1,9 +1,9 @@
-require('dotenv').config();
+const API_KEY = 'AIzaSyAqT2FhdwNCXOQJJQ4-M3FkhGa-sWOHXg4';
+const CHANNEL_ID = 'UCeyGqH_5jRB1q5c0cZKWhiQ';
 const fetch = require("node-fetch");
 const localStorage = require('node-localstorage').LocalStorage;
 const storage = new localStorage('./data');
-const API_KEY = process.env.API_KEY;
-const CHANNEL_ID = process.env.CHANNEL_ID;
+
 
 
 async function saveToLocal() {
