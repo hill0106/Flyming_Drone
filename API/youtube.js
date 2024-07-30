@@ -1,9 +1,10 @@
-const API_KEY = process.env.API_KEY;
-const CHANNEL_ID = process.env.CHANNEL_ID;
-
+require('dotenv').config();
 const fetch = require("node-fetch");
 const localStorage = require('node-localstorage').LocalStorage;
 const storage = new localStorage('./data');
+const API_KEY = process.env.API_KEY;
+const CHANNEL_ID = process.env.CHANNEL_ID;
+
 
 async function saveToLocal() {
     let allPlaylistData = await getAllPlaylistData();
@@ -21,27 +22,33 @@ async function saveToLocal() {
 
 async function getAllPlaylistData() {
     try {
-        let playlist = ["PLdfk1T6U5Zuo-GcyxBsA_aMInsy7r-Owk", "PLdfk1T6U5ZuothN0pxnsac3H0zkGeM7d4", "PLdfk1T6U5ZuothN0pxnsac3H0zkGeM7d4", "PLdfk1T6U5ZurU1rZpvvu8DyST1-01MYq0", "PLdfk1T6U5ZuoKVgtQNshar4sULiX40NUJ", "PLdfk1T6U5Zuru1ulidscYLzKnma7UljlY"]
+        let playlist = ["PLdfk1T6U5Zuo-GcyxBsA_aMInsy7r-Owk", "PLdfk1T6U5ZuothN0pxnsac3H0zkGeM7d4", "PLdfk1T6U5ZurU1rZpvvu8DyST1-01MYq0", "PLdfk1T6U5ZuoKVgtQNshar4sULiX40NUJ", "PLdfk1T6U5Zuru1ulidscYLzKnma7UljlY"]
         const allPlaylistDataPromises = playlist.map(async (playlist_id) => {
             let playlistItems_url = `https://www.googleapis.com/youtube/v3/playlistItems?order=date&part=snippet,contentDetails&playlistId=${playlist_id}&maxResults=50&key=${API_KEY}`;
-            let d = await fetch(playlistItems_url);
-            let djs = await d.json();
-            let items = djs.items;
-            let playlistItems = [];
-
-            items.map(item => {
-                const element = item.snippet;
-                const video_id = item.contentDetails.videoId;
-                if (checkPrivateVideo(element.title)) {
-                    playlistItems.push({playlist_id, video_id});
-                }
-                else {
-                    return null;
-                }
-            }).filter(Boolean);
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            let statistics = getYoutubeDataByVideoId(playlistItems);
-            return statistics;
+            try {
+                let d = await fetch(playlistItems_url);
+                let djs = await d.json();
+                let items = djs.items;
+                let playlistItems = [];
+                items.map(item => {
+                    const element = item.snippet;
+                    const video_id = item.contentDetails.videoId;
+                    if (checkPrivateVideo(element.title)) {
+                        playlistItems.push({playlist_id, video_id});
+                    }
+                    else {
+                        return null;
+                    }
+                }).filter(Boolean);
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                let statistics = getYoutubeDataByVideoId(playlistItems);
+                
+                return statistics;
+            }
+            catch(e) {
+                
+            }
+            
         });
         const allPlayListData = await Promise.all(allPlaylistDataPromises);
         // const dataSizeInBytes = new TextEncoder().encode(allPlayListData).length;
