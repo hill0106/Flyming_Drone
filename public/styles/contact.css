@@ -21,7 +21,7 @@ html, body {
 
 .left .fa-solid {
     position: absolute;
-    color: #159A9A;
+    color: #00004B;
     margin: 20px;
 }
 
@@ -68,7 +68,7 @@ html, body {
 
 .c1 .link:hover {
     cursor: pointer;
-    color:#159A9A;
+    color:#00004B;
 }
 
 
@@ -79,23 +79,23 @@ html, body {
 .f1 h3 {
     font-size: 1.2rem;
     font-weight: 400;
-    color: #0C4545;
+    color: #00004B;
 }
 
 .f1 input {
-    border: solid 0.08rem #159A9A;
+    border: solid 0.08rem #00004B;
     width: 45vw;
 }
 
 .content {
     height: 15vw;
     width: 45vw;
-    border: solid 0.08rem #159A9A;
+    border: solid 0.08rem #00004B;
 }
   
 
 .btn-primary {
-    background-color: #159A9A;
+    background-color: #00004B;
     border-radius: 20px;
     border: none;
     /* width: 5vw; */
