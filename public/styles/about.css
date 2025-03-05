@@ -9,7 +9,9 @@ body {
   position: relative;
 }
 
-
+main {
+  min-height: 200vh;
+}
   
   .Left {
     height: 150%;
@@ -245,9 +247,6 @@ body {
     justify-content: flex-start;
   }
   
-  .active {
-    color: #477e9d;
-  }
 
   .aboutme-text1, .aboutme-text2,.aboutme-text3 {
     margin-top: 10px;
