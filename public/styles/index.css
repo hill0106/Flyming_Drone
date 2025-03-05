@@ -175,11 +175,11 @@ nav ul a:hover {
 
 .navbar-dark .navbar-toggler-icon {
     background-image:none;
-    color: #000; /* Change this to your desired color */
+    color: white; /* Change this to your desired color */
   }
 
 .offcanvas-header, .offcanvas-body {
-    background-color: #B2D3D3;
+    background-color: #00004B;
 }
 
 .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link {
