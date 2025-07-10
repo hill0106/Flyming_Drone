@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flyming-drone-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flyming-drone-backend
+  template:
+    metadata:
+      labels:
+        app: flyming-drone-backend
+    spec:
+      containers:
+      - name: backend
+        image: hill0106/flyming-drone-backend:latest
+        ports:
+        - containerPort: 3000
