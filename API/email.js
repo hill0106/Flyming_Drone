@@ -7,15 +7,15 @@ async function sendEmail(name, email, subject, content) {
             url: 'https://rapidmail.p.rapidapi.com/',
             headers: {
               'content-type': 'application/json',
-              'X-RapidAPI-Key': '9a42246cccmsh085fde92be04398p1fa578jsne69bddfc574e',
-              'X-RapidAPI-Host': 'rapidmail.p.rapidapi.com'
+              'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
+              'X-RapidAPI-Host': process.env.RAPIDAPI_HOST
             },
             data: {
               ishtml: 'false',
-              sendto: 'smcming@gmail.com',
-              name: 'Flyming Drone',
+              sendto: process.env.CONTACT_EMAIL,
+              name: process.env.EMAIL_SENDER_NAME,
               replyTo: email,
-              title: 'Flyming Drone Contact 來信',
+              title: process.env.EMAIL_TITLE || 'Flyming Drone Contact 來信',
               body: ` 使用者來信內容：
 
               Name: ${name}
