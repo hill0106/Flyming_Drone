@@ -4,3 +4,7 @@
 .env
 
 node_modules
+.DS_Store
+*.log
+*.tmp
+coverage/

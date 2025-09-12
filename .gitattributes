@@ -1,0 +1,26 @@
+# Mark vendored directories
+node_modules/ linguist-vendored
+coverage/ linguist-vendored
+.nyc_output/ linguist-vendored
+
+# Mark generated files
+*.min.js linguist-generated
+*.min.css linguist-generated
+*.map linguist-generated
+
+# Mark documentation
+*.md linguist-documentation
+LICENSE linguist-documentation
+README.md linguist-documentation
+
+# Mark large assets
+*.jpg linguist-vendored
+*.jpeg linguist-vendored
+*.png linguist-vendored
+*.gif linguist-vendored
+*.mp4 linguist-vendored
+*.mov linguist-vendored
+
+# Mark data files
+data/ linguist-vendored
+*.json linguist-data
